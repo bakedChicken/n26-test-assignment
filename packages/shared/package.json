@@ -1,0 +1,7 @@
+{
+  "name": "@test-assignment/shared",
+  "private": true,
+  "files": [
+    "application.ts"
+  ]
+}

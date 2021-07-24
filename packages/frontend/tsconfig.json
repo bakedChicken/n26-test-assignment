@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "rootDir": ".",
+    "outDir": "../../.build/frontend",
+    "module": "ESNext",
+    "lib": ["DOM", "ESNext"],
+    "composite": true
+  },
+  "files": [
+    "src/main.tsx",
+    "src/app/Root.tsx"
+  ]
+}

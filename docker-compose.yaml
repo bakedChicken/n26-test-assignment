@@ -1,0 +1,69 @@
+services:
+  database:
+    image: postgres:13.3-alpine
+    volumes:
+      - ./.data/postgresql/data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - 5432:5432
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+      interval: 1s
+      timeout: 5s
+      retries: 20
+
+  root:
+    image: node:16.5.0-alpine
+    working_dir: /app
+    command: "sh -c 'npm install && npm run tsc:watch'"
+    volumes:
+      - .:/app
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "[ -d /app/.build/frontend ] && [ -d /app/.build/backend ]",
+        ]
+      interval: 5s
+      retries: 20
+
+  backend:
+    image: node:16.5.0-alpine
+    working_dir: /app
+    command: npm run backend:watch
+    volumes:
+      - .:/app
+    ports:
+      - 4000:80
+    restart: unless-stopped
+    depends_on:
+      root:
+        condition: service_healthy
+      database:
+        condition: service_healthy
+    healthcheck:
+      test:
+        ["CMD-SHELL", "wget --quiet --spider http://localhost/api/applications"]
+      interval: 1s
+      retries: 20
+
+  frontend:
+    image: node:16.5.0-alpine
+    working_dir: /app
+    command: npm run frontend:watch
+    volumes:
+      - .:/app
+    ports:
+      - 3000:3000
+    restart: unless-stopped
+    depends_on:
+      root:
+        condition: service_healthy
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "wget --quiet --spider http://localhost"]
+      interval: 1s
+      retries: 20

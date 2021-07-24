@@ -1,0 +1,10 @@
+{
+  "name": "@test-assignment/frontend",
+  "private": "true",
+  "dependencies": {
+    "@test-assignment/shared": "file:../shared",
+    "@material-ui/core": "4.12.2",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
+  }
+}

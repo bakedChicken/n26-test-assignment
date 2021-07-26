@@ -1,7 +1,6 @@
 {
   "name": "@test-assignment/shared",
   "private": true,
-  "files": [
-    "application.ts"
-  ]
+  "main": "build/src/index.js",
+  "types": "build/src/index.d.ts"
 }

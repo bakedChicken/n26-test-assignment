@@ -10,9 +10,8 @@ services:
       - 5432:5432
     healthcheck:
       test: ["CMD-SHELL", "pg_isready"]
-      interval: 1s
-      timeout: 5s
-      retries: 20
+      interval: 2s
+      retries: 50
 
   root:
     image: node:16.5.0-alpine
@@ -24,10 +23,10 @@ services:
       test:
         [
           "CMD-SHELL",
-          "[ -d /app/.build/frontend ] && [ -d /app/.build/backend ]",
+          "[ -d /app/packages/frontend/build ] && [ -d /app/packages/backend/build ]",
         ]
       interval: 5s
-      retries: 20
+      retries: 50
 
   backend:
     image: node:16.5.0-alpine
@@ -47,7 +46,7 @@ services:
       test:
         ["CMD-SHELL", "wget --quiet --spider http://localhost/api/applications"]
       interval: 1s
-      retries: 20
+      retries: 50
 
   frontend:
     image: node:16.5.0-alpine
@@ -66,4 +65,4 @@ services:
     healthcheck:
       test: ["CMD-SHELL", "wget --quiet --spider http://localhost"]
       interval: 1s
-      retries: 20
+      retries: 50

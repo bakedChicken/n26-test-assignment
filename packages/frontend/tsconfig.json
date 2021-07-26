@@ -3,13 +3,14 @@
   "compilerOptions": {
     "baseUrl": ".",
     "rootDir": ".",
-    "outDir": "../../.build/frontend",
+    "outDir": "build",
     "module": "ESNext",
-    "lib": ["DOM", "ESNext"],
-    "composite": true
+    "lib": ["DOM", "ESNext"]
   },
-  "files": [
-    "src/main.tsx",
-    "src/app/Root.tsx"
-  ]
+  "references": [
+    {
+      "path": "../shared"
+    }
+  ],
+  "exclude": ["build"]
 }

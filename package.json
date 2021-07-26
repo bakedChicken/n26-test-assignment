@@ -9,8 +9,9 @@
   ],
   "scripts": {
     "frontend:watch": "vite",
-    "backend:watch": "nodemon ./.build/backend/src/main.js",
-    "tsc:watch": "tsc --build --watch packages/frontend packages/backend"
+    "backend:watch": "nodemon packages/backend/build/src/main.js",
+    "tsc:watch": "tsc --build --watch packages/backend packages/frontend",
+    "clean": "rm -r packages/**/build"
   },
   "devDependencies": {
     "@types/node": "16.4.1",
@@ -114,7 +115,9 @@
             }
           ],
           "react/prop-types": "off",
-          "react/jsx-no-literals": "off"
+          "react/jsx-no-literals": "off",
+          "react/jsx-max-depth": "off",
+          "react/jsx-props-no-spreading": "off"
         }
       },
       {

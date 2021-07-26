@@ -1,8 +1,9 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "rootDir": ".",
-    "outDir": "../../.build/shared",
-    "composite": true
-  }
+    "outDir": "build",
+    "composite": true,
+    "module": "CommonJS"
+  },
+  "exclude": ["build"]
 }

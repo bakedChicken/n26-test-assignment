@@ -28,6 +28,18 @@ Backend application will use port `4000`.
 I'm sorry, there is no `.env` file to change these defaults, but you could manually change them in 
 `docker-compose.yaml` file.
 
+Screenshots of working application:
+
+![main list](screenshots/main-list.png)
+
+Create application:
+
+![img.png](screenshots/create-application.png)
+
+Choose version:
+
+![img.png](screenshots/choose-version.png)
+
 ## Technical Details
 
 ### Communication between backend and frontend

@@ -12,6 +12,6 @@ export type GetApplicationsResponse = Application[];
 
 export class ApplicationRequestBody {
   readonly description!: string;
-  readonly metadata?: Record<string, unknown>;
-  readonly data?: Record<string, unknown>;
+  readonly metadata?: string;
+  readonly data?: string;
 }

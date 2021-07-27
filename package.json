@@ -75,13 +75,13 @@
       "@typescript-eslint/no-unsafe-assignment": "off",
       "@typescript-eslint/prefer-nullish-coalescing": "error",
       "@typescript-eslint/prefer-optional-chain": "error",
+      "@typescript-eslint/restrict-template-expressions": "off",
       "@typescript-eslint/typedef": [
         "error",
         {
           "parameter": true,
           "arrowParameter": true,
-          "propertyDeclaration": true,
-          "variableDeclaration": true
+          "propertyDeclaration": true
         }
       ]
     },
@@ -117,7 +117,9 @@
           "react/prop-types": "off",
           "react/jsx-no-literals": "off",
           "react/jsx-max-depth": "off",
-          "react/jsx-props-no-spreading": "off"
+          "react/jsx-no-bind": "off",
+          "react/jsx-props-no-spreading": "off",
+          "react/forbid-component-props": "off"
         }
       },
       {
